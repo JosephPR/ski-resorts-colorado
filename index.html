@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
       html,
       body {
@@ -18,15 +19,41 @@
         font-size: 12px;
       }
       h1 {
-        color: #525454;
+        
         font-size: 22px;
         margin: 0 0 10px 0;
         text-align: center;
       }
-      #hide-listings,
-      #show-listings {
-        width: 48%;
+      #hide-listings {
+        background: none;
+        background-color: rgba(236, 209, 202, 0.55);
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 100%;
+        border: 1px solid #147c98;
+        border-radius: 0;
+        border-bottom: 1px solid grey;
+        margin: 25px 0;
       }
+        #hide-listings:hover {
+          background-color: black;
+        }
+      #show-listings {
+        background: none;
+        background-color: rgba(202, 232, 236, 0.72);
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        width: 100%;
+        border: 1px solid #147c98;
+        border-radius: 0;
+        border-bottom: 1px solid grey;
+        margin: 25px 0;
+      }
+        #show-listings:hover {
+          background-color: black;
+        }
       #map {
         bottom:0px;
         height: 100%;
@@ -47,16 +74,16 @@
     </style>
   </head>
   <body>
-    <div class="container">
+
       <div class="options-box">
         <h1>Ski areas in Colorado</h1>
         <div id="inputs">
-          <input id="show-listings" type="button" value="Show Mountains">
-          <input id="hide-listings" type="button" value="Hide Mountains">
+          <input id="show-listings" class="btn btn-outline-primary" type="button" value="Show Mountains">
+          <input id="hide-listings" class="btn btn-outline-danger" type="button" value="Hide Mountains">
         </div>
       </div>
       <div id="map"></div>
-    </div>
+
     <script src="app.js"></script>
 
     <script async defer

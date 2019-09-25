@@ -88,6 +88,8 @@ var map;
     {title: 'Copper Mountain', location: {lat: 39.500820, lng: -106.146490}},
     {title: 'Winter Park', location: {lat: 39.891060, lng: -105.760720}},
     {title: 'Telluride', location: {lat: 37.937410, lng: -107.811760}},
+    {title: 'Park City', location: {lat: 40.646061, lng: -111.497971}},
+    {title: 'Snowbird', location: {lat: 39.911850, lng: -111.107269}},
 
   ];
 
