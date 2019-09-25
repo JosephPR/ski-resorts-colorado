@@ -1,94 +1,145 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-      html,
-      body {
-        font-family: Arial, sans-serif;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        height: 100%;
-        position: relative;
-      }
 
-      input {
-        font-size: 12px;
-      }
-      h1 {
-        
-        font-size: 22px;
-        margin: 0 0 10px 0;
-        text-align: center;
-      }
-      #hide-listings {
-        background: none;
-        background-color: rgba(236, 209, 202, 0.55);
-        font-size: 18px;
-        padding: 10px 10px 10px 5px;
-        display: block;
-        width: 100%;
-        border: 1px solid #147c98;
-        border-radius: 0;
-        border-bottom: 1px solid grey;
-        margin: 25px 0;
-      }
-        #hide-listings:hover {
-          background-color: black;
-        }
-      #show-listings {
-        background: none;
-        background-color: rgba(202, 232, 236, 0.72);
-        font-size: 18px;
-        padding: 10px 10px 10px 5px;
-        display: block;
-        width: 100%;
-        border: 1px solid #147c98;
-        border-radius: 0;
-        border-bottom: 1px solid grey;
-        margin: 25px 0;
-      }
-        #show-listings:hover {
-          background-color: black;
-        }
-      #map {
-        bottom:0px;
-        height: 100%;
-        left: 362px;
-        position: absolute;
-        right: 0px;
-      }
-      .options-box {
-        background: #fff;
-        border: 1px solid #999;
-        border-radius: 3px;
-        height: 100%;
-        line-height: 35px;
-        padding: 10px 10px 30px 10px;
-        text-align: left;
-        width: 340px;
-      }
-    </style>
-  </head>
-  <body>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    html,
+    body {
+      font-family: Arial, sans-serif;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      <div class="options-box">
-        <h1>Ski areas in Colorado</h1>
-        <div id="inputs">
-          <input id="show-listings" class="btn btn-outline-primary" type="button" value="Show Mountains">
-          <input id="hide-listings" class="btn btn-outline-danger" type="button" value="Hide Mountains">
-        </div>
-      </div>
-      <div id="map"></div>
+    .container {
+      height: 100%;
+      position: relative;
+    }
 
-    <script src="app.js"></script>
+    input {
+      font-size: 12px;
+    }
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyC7Ud4yf9EqCsE4qMLgb9h6Isb1qX4pPXE&v=3&callback=initMap">
-    </script>
+    h1 {
 
-  </body>
+      font-size: 22px;
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+
+    #hide-listings {
+      background: none;
+      background-color: rgba(236, 209, 202, 0.55);
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 100%;
+      border: 1px solid #147c98;
+      border-radius: 0;
+      border-bottom: 1px solid grey;
+      margin: 25px 0;
+    }
+
+    #hide-listings:hover {
+      background-color: black;
+    }
+
+    #show-listings {
+      background: none;
+      background-color: rgba(202, 232, 236, 0.72);
+      font-size: 18px;
+      padding: 10px 10px 10px 5px;
+      display: block;
+      width: 100%;
+      border: 1px solid #147c98;
+      border-radius: 0;
+      border-bottom: 1px solid grey;
+      margin: 25px 0;
+    }
+
+    #show-listings:hover {
+      background-color: black;
+    }
+
+    #map {
+      bottom: 0px;
+      height: 100%;
+      left: 362px;
+      position: absolute;
+      right: 0px;
+    }
+
+    .options-box {
+      background: #fff;
+      border: 1px solid #999;
+      border-radius: 3px;
+      height: 100%;
+      line-height: 35px;
+      padding: 10px 10px 30px 10px;
+      text-align: left;
+      width: 340px;
+    }
+
+    #toggle-drawing {
+      width: 27%;
+      position: relative;
+      margin-left: 10px;
+    }
+
+    #zoom-to-area-text {
+      position: relative;
+      width: 70%;
+    }
+
+    #zoom-to-area {
+      width: 24%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="options-box">
+    <h1>Ski areas in Colorado</h1>
+    <div id="inputs">
+      <input id="show-listings" class="btn btn-outline-primary" type="button" value="Show Mountains">
+      <input id="hide-listings" class="btn btn-outline-danger" type="button" value="Hide Mountains">
+      <hr>
+      <span class="text"> Draw a shape to search within it for homes!</span>
+      <input id="toggle-drawing" type="button" value="Drawing Tools">
+    </div>
+    <hr />
+    <div>
+      <input id="zoom-to-area-text" type="text" placeholder="Enter your favorite area!" value="">
+      <input id="zoom-to-area" type="button" value="Zoom">
+    </div>
+    <hr>
+    <div>
+      <span class="text"> Within </span>
+      <select id="max-duration">
+        <option value="120">2 Hours</option>
+        <option value="240">4 Hours</option>
+        <option value="480">8 Hours</option>
+        <option value="960">16 Hours</option>
+      </select>
+      <select id="mode">
+        <option value="DRIVING">drive</option>
+        <option value="BICYCLING">bike</option>
+        <option value="TRANSIT">transit ride</option>
+      </select>
+      <span class="text">of</span>
+      <input id="search-within-time-text" type="text" placeholder="Ex: Google Office NYC or 75 9th Ave, New York, NY">
+      <input id="search-within-time" type="button" value="Go">
+    </div>
+  </div>
+  <div id="map"></div>
+
+  <script src="app.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyC7Ud4yf9EqCsE4qMLgb9h6Isb1qX4pPXE&v=3&callback=initMap">
+  </script>
+
+</body>
+
 </html>
